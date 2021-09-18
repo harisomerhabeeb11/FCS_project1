@@ -51,16 +51,18 @@ export default function Decomposition() {
     }
   };
 
+  // Main function logic.
   function powerOfThree(n) {
     const POWER_OF_THREE = [1,3,9,27,81];
     let outputString = "";
     let temp = n;
     let add = true;
-    while(temp) {
-      let distance = Math.abs(temp - 1);
+    while(temp) { // while the input is not zero
+      let distance = Math.abs(temp - 1); // take the absolute value of temp - 1 as distance
       let closest = 1;
-      for(let i = 1; i < POWER_OF_THREE.length; ++i) {
-        let tempDis = Math.abs(temp - POWER_OF_THREE[i]);
+      for(let i = 1; i < POWER_OF_THREE.length; ++i) { 
+        // we iterate of the array to compare the closest value with the input
+        let tempDis = Math.abs(temp - POWER_OF_THREE[i]); // checks the distance between the input and the closest number.
         if(distance && distance > tempDis) {
           distance = tempDis;
           closest = POWER_OF_THREE[i];
@@ -69,6 +71,7 @@ export default function Decomposition() {
       if(closest > temp) add = !add;
       temp = distance;
       if (temp && temp > 0) {
+        // concatenate string with the signs based on the values of temp
         let s = "";
         s = closest;
         outputString += s;
@@ -81,6 +84,7 @@ export default function Decomposition() {
     }
     return outputString;
   }
+
   const onResetHandler = () => {
     setUserInput(null);
     setResult(null);
