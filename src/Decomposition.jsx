@@ -39,7 +39,14 @@ export default function Decomposition() {
     if (userInput === "" || userInput === null) {
       setErrorMsg("Please enter a valid integer value");
       setShowMsg(true);
-    } else {
+    } else if(userInput < -121) { 
+      setErrorMsg("Please enter value greater than -121");
+      setShowMsg(true);
+    } else if(userInput > 121) {
+      setErrorMsg("Please enter value less than 121");
+      setShowMsg(true);
+    } 
+    else {
       setResult(powerOfThree(userInput));
     }
   };
@@ -61,7 +68,7 @@ export default function Decomposition() {
       } 
       if(closest > temp) add = !add;
       temp = distance;
-      if (temp) {
+      if (temp && temp > 0) {
         let s = "";
         s = closest;
         outputString += s;
